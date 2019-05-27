@@ -1,8 +1,10 @@
 package com.bean.Student;
 
+import com.bean.ShowStudent.ShowStudent;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -54,11 +56,24 @@ public class Test {
         System.out.println(stu);
     }
 
+    /**
+     * 构造注入,这里要在Student.java中设置带全参的构造函数,但是这样子的话上面的那些Test()就会报错
+     */
     @org.junit.Test
     public void Test3()
     {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/bean/Student/Userbean.xml");
         Student stu = (Student)applicationContext.getBean("Student");
         System.out.println(stu);
+    }
+
+    /**
+     * 自动装配Bean之根据Bean的名字装配
+     */
+    @org.junit.Test
+    public void Test4(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ShowStudent showStudent = (ShowStudent)applicationContext.getBean("show1");
+        System.out.println(showStudent);
     }
 }

@@ -3,4 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <bean id="Student" class="com.bean.Student.Student"></bean>
+
+    <!--下面实现的是根据Bean的名字来完成自动装配-->
+<bean id="show1" class="com.bean.ShowStudent.ShowStudent" autowire="byName"></bean>  <!--autowire用处?-->
+    <bean class="com.bean.Student.Student" id="student">
+        <property name="name"><value>Alexander</value></property>
+        <property name="sex"><value>男</value></property>
+        <property name="age"><value>20</value></property>
+    </bean>
 </beans>
